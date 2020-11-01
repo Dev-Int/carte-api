@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Carte-API
 
 on:
   push:
