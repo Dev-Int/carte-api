@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+if (!file_exists(dirname(__DIR__).'/vendor/squizlabs/php_codesniffer/bin/phpcbf')) {
+    echo "Unable to find the `phpcbf`script in vendor/squizlabs/php_codesniffer/bin/`.\n";
+    exit(1);
+}
+
+require dirname(__DIR__).'/vendor/squizlabs/php_codesniffer/bin/phpcbf';

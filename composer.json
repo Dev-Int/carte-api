@@ -20,6 +20,12 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpstan/phpstan": "^0.12.53",
+        "squizlabs/php_codesniffer": "^3.5",
+        "symfony/browser-kit": "^5.1",
+        "symfony/css-selector": "^5.1",
+        "symfony/phpunit-bridge": "^5.1"
     },
     "config": {
         "optimize-autoloader": true,
@@ -52,6 +58,12 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
+        "migrations-fixtures": [
+            "php bin/console doctrine:migrations:migrate -n",
+            "php bin/console doctrine:fixtures:load -n"
+        ],
+        "tests": "php bin/phpunit",
+        "phpcs": "php ./bin/phpcs",
         "post-install-cmd": [
             "@auto-scripts"
         ],
