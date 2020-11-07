@@ -78,6 +78,9 @@ return PhpCsFixer\Config::create()
         'global_namespace_import' => false,
         'native_constant_invocation' => true,
         'native_function_invocation' => true,
+        'concat_space' => [
+            'spacing' => 'none',
+        ],
         'php_unit_test_case_static_method_calls' => [
             'call_type' => 'static',
         ],
