@@ -1,5 +1,5 @@
 parameters:
-    level: 7
+    level: 8
     paths:
         - src
         - tests
@@ -7,7 +7,7 @@ parameters:
         - tests/bootstrap.php
 #        - src/Entity/Common/StringExceeds255Characters.php
 #        - src/DoctrineMigrations
-#    bootstrapFiles:
-#        - bin/.phpunit/phpunit-7.5-0/vendor/autoload.php
+    bootstrapFiles:
+        - bin/.phpunit/phpunit-7.5-0/vendor/autoload.php
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
