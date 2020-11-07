@@ -1,0 +1,52 @@
+@startuml
+
+class Product {
+  id int
+  label string
+  createdAt dateTime
+  updatedAt dateTime
+  deletedAt dateTime
+
+  getId()
+  getLabel()
+  getCreatedAt()
+  getUpdatedAt()
+  getDeletedAt()
+}
+
+class Menu {
+  id int
+  label string
+  products Product
+  createdAt dateTime
+  updatedAt dateTime
+  deletedAt dateTime
+
+  getId()
+  getLabel()
+  getCreatedAt()
+  getUpdatedAt()
+  getDeletedAt()
+}
+
+class Carte {
+  id int
+  label string
+  products Product
+  menus Menu
+  createdAt dateTime
+  updatedAt dateTime
+  deletedAt dateTime
+
+  getId()
+  getLabel()
+  getCreatedAt()
+  getUpdatedAt()
+  getDeletedAt()
+}
+
+Carte <= Product
+Carte <= Menu
+Menu <= Product
+
+@enduml
