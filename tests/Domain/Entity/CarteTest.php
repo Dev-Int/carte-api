@@ -195,6 +195,6 @@ class CarteTest extends TestCase
         );
 
         // Assert
-        self::assertTrue($carte->isDeleted());
+        static::assertTrue($carte->isDeleted());
     }
 }

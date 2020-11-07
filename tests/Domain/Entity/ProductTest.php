@@ -76,6 +76,6 @@ class ProductTest extends TestCase
         );
 
         // Assert
-        self::assertTrue($product->isDeleted());
+        static::assertTrue($product->isDeleted());
     }
 }

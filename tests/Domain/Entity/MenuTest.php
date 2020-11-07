@@ -136,6 +136,6 @@ class MenuTest extends TestCase
         );
 
         // Assert
-        self::assertTrue($menu->isDeleted());
+        static::assertTrue($menu->isDeleted());
     }
 }
