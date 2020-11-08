@@ -1,0 +1,20 @@
+default:
+    suites:
+        default:
+            contexts:
+                - Tests\Behat\DemoContext
+                - Tests\Behat\ProductContext
+                - Tests\Behat\MenuContext
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php
+            kernel:
+                class: Infrastructure\Kernel
+                path: ~
+                environment: ~
+                debug: ~
+        Behat\MinkExtension:
+            sessions:
+                symfony:
+                    symfony: ~

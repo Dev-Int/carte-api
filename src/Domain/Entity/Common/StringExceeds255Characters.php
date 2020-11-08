@@ -11,19 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Domain\Protocol\Repository;
+namespace Domain\Entity\Common;
 
-use Domain\Entity\Carte;
-
-interface CarteRepositoryProtocol
+class StringExceeds255Characters extends \DomainException
 {
     /**
-     * Save the Carte object in database.
+     * @var string
      */
-    public function save(Carte $carte): void;
-
-    /**
-     * Delete the Carte object in database.
-     */
-    public function remove(Carte $carte): void;
+    protected $message = 'Le titre est trop long. Vous ne devriez pas exéder 255 caractères';
 }

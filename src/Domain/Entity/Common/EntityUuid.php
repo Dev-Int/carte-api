@@ -11,9 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Domain\Entity;
-
-use Domain\Entity\Common\AbstractUuid;
+namespace Domain\Entity\Common;
 
 final class EntityUuid extends AbstractUuid
 {

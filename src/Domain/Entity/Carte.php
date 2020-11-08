@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Domain\Entity;
 
+use Domain\Entity\Common\VO\LabelEntity;
 use Domain\Entity\Protocols\UuidProtocol;
 use Domain\Entity\Traits\SoftDeletableEntity;
 use Domain\Entity\Traits\TimestampableEntity;
@@ -35,13 +36,17 @@ class Carte
      */
     private $products;
     /**
-     * @var null|array
+     * @var array|null
      */
     private $menus;
+    /**
+     * @var string
+     */
+    private $slug;
 
     public function __construct(
         UuidProtocol $uuid,
-        string $label,
+        LabelEntity $label,
         array $products,
         \DateTimeImmutable $createdAt,
         array $menus = [],
@@ -49,17 +54,18 @@ class Carte
         ?\DateTimeImmutable $deletedAt = null
     ) {
         $this->uuid = $uuid->toString();
-        $this->label = $label;
+        $this->label = $label->getValue();
         $this->products = $products;
         $this->menus = $menus;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
         $this->deletedAt = $deletedAt;
+        $this->slug = $label->slugify();
     }
 
     public static function create(
         UuidProtocol $uuid,
-        string $label,
+        LabelEntity $label,
         array $products,
         \DateTimeImmutable $createdAt,
         array $menus = [],
@@ -77,9 +83,10 @@ class Carte
         );
     }
 
-    public function changeLabel(string $label, \DateTimeImmutable $updatedAt): void
+    public function changeLabel(LabelEntity $label, \DateTimeImmutable $updatedAt): void
     {
-        $this->label = $label;
+        $this->label = $label->getValue();
+        $this->slug = $label->slugify();
         $this->updatedAt = $updatedAt;
     }
 

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Domain\Entity;
 
+use Domain\Entity\Common\VO\LabelEntity;
 use Domain\Entity\Protocols\UuidProtocol;
 use Domain\Entity\Traits\SoftDeletableEntity;
 use Domain\Entity\Traits\TimestampableEntity;
@@ -31,23 +32,29 @@ class Product
      */
     private $label;
 
-    public function __construct(
+    /**
+     * @var string
+     */
+    private $slug;
+
+    final public function __construct(
         UuidProtocol $uuid,
-        string $label,
+        LabelEntity $label,
         \DateTimeImmutable $createdAt,
         ?\DateTimeImmutable $updatedAt = null,
         ?\DateTimeImmutable $deletedAt = null
     ) {
         $this->uuid = $uuid->toString();
-        $this->label = $label;
+        $this->label = $label->getValue();
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
         $this->deletedAt = $deletedAt;
+        $this->slug = $label->slugify();
     }
 
     public static function create(
         UuidProtocol $uuid,
-        string $label,
+        LabelEntity $label,
         \DateTimeImmutable $createdAt,
         ?\DateTimeImmutable $updatedAt = null,
         ?\DateTimeImmutable $deletedAt = null
@@ -55,9 +62,25 @@ class Product
         return new self($uuid, $label, $createdAt, $updatedAt, $deletedAt);
     }
 
-    public function changeLabel(string $label, \DateTimeImmutable $updatedAt): void
+    public function getUuid(): string
     {
-        $this->label = $label;
+        return $this->uuid;
+    }
+
+    public function getLabel(): string
+    {
+        return $this->label;
+    }
+
+    public function changeLabel(LabelEntity $label, \DateTimeImmutable $updatedAt): void
+    {
+        $this->label = $label->getValue();
+        $this->slug = $label->slugify();
         $this->updatedAt = $updatedAt;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
     }
 }
