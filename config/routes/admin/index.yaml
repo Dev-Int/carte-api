@@ -1,0 +1,3 @@
+admin_api_products:
+  resource: products.yaml
+#  type: rest
