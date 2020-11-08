@@ -28,7 +28,6 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "friendsofphp/php-cs-fixer": "^2.16",
-        "hautelook/alice-bundle": "^2.8",
         "phpstan/phpstan": "^0.12.53",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/browser-kit": "^5.1",
@@ -50,7 +49,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\Domain\\": "tests/Domain",
+            "Tests\\Infrastructure\\": "tests/Infrastructure"
         }
     },
     "replace": {
