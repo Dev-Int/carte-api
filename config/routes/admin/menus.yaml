@@ -1,0 +1,6 @@
+menus_list:
+  controller: Infrastructure\Controllers\Menu\GetMenusListController
+  path: /menus/list
+  methods: GET|HEAD
+#  resource: Infrastructure\Controllers/GetProductsList
+#  type: rest
