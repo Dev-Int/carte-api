@@ -14,7 +14,8 @@ declare(strict_types=1);
 namespace Tests\Domain\Entity;
 
 use Domain\Entity\Carte;
-use Domain\Entity\EntityUuid;
+use Domain\Entity\Common\EntityUuid;
+use Domain\Entity\Common\VO\LabelEntity;
 use Domain\Entity\Menu;
 use Domain\Entity\Product;
 use PHPUnit\Framework\TestCase;
@@ -26,19 +27,19 @@ class CarteTest extends TestCase
         // Arrange
         $product = Product::create(
             EntityUuid::fromString('e5b6c68b-23d0-4e4e-ad5e-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $product2 = Product::create(
             EntityUuid::fromString('e5b6c68b-8f6e-4e4e-91bc-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
 
         // Act
         $carte = Carte::create(
             EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-            'Ma carte',
+            LabelEntity::fromString('Ma carte'),
             [$product, $product2],
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
@@ -47,7 +48,7 @@ class CarteTest extends TestCase
         static::assertEquals(
             new Carte(
                 EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-                'Ma carte',
+                LabelEntity::fromString('Ma carte'),
                 [$product, $product2],
                 new \DateTimeImmutable('2020-10-25 15:00:00')
             ),
@@ -60,30 +61,30 @@ class CarteTest extends TestCase
         // Arrange
         $product = Product::create(
             EntityUuid::fromString('e5b6c68b-23d0-4e4e-ad5e-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $product2 = Product::create(
             EntityUuid::fromString('e5b6c68b-8f6e-4e4e-91bc-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $carte = Carte::create(
             EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-            'Ma carte',
+            LabelEntity::fromString('Ma carte'),
             [$product, $product2],
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
 
         // Act
         $updatedAt = new \DateTimeImmutable('2020-11-01 01:01:00');
-        $carte->changeLabel('Nouvelle carte', $updatedAt);
+        $carte->changeLabel(LabelEntity::fromString('Nouvelle carte'), $updatedAt);
 
         // Assert
         static::assertEquals(
             new Carte(
                 EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-                'Nouvelle carte',
+                LabelEntity::fromString('Nouvelle carte'),
                 [$product, $product2],
                 new \DateTimeImmutable('2020-10-25 15:00:00'),
                 [],
@@ -98,17 +99,17 @@ class CarteTest extends TestCase
         // Arrange
         $product = Product::create(
             EntityUuid::fromString('e5b6c68b-23d0-4e4e-ad5e-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $product2 = Product::create(
             EntityUuid::fromString('e5b6c68b-8f6e-4e4e-91bc-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $carte = Carte::create(
             EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-            'Ma carte',
+            LabelEntity::fromString('Ma carte'),
             [$product, $product2],
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
@@ -121,7 +122,7 @@ class CarteTest extends TestCase
         static::assertEquals(
             new Carte(
                 EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-                'Ma carte',
+                LabelEntity::fromString('Ma carte'),
                 [$product, $product2],
                 new \DateTimeImmutable('2020-10-25 15:00:00'),
                 [],
@@ -136,23 +137,23 @@ class CarteTest extends TestCase
         // Arrange
         $product = Product::create(
             EntityUuid::fromString('e5b6c68b-23d0-4e4e-ad5e-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $product2 = Product::create(
             EntityUuid::fromString('e5b6c68b-8f6e-4e4e-91bc-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $menu = Menu::create(
             EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-586374791033'),
-            'Mon menu',
+            LabelEntity::fromString('Ma carte'),
             [$product],
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $carte = Carte::create(
             EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-            'Ma carte',
+            LabelEntity::fromString('Ma carte'),
             [$product, $product2],
             new \DateTimeImmutable('2020-10-25 15:00:00'),
             [$menu]
@@ -166,7 +167,7 @@ class CarteTest extends TestCase
         static::assertEquals(
             new Carte(
                 EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-                'Ma carte',
+                LabelEntity::fromString('Ma carte'),
                 [$product, $product2],
                 new \DateTimeImmutable('2020-10-25 15:00:00'),
                 [$menu, [$product2]],
@@ -181,12 +182,12 @@ class CarteTest extends TestCase
         // Arrange && Act
         $product = Product::create(
             EntityUuid::fromString('e5b6c68b-23d0-4e4e-ad5e-436c649da004'),
-            'Mon produit',
+            LabelEntity::fromString('Mon produit'),
             new \DateTimeImmutable('2020-10-25 15:00:00')
         );
         $carte = Carte::create(
             EntityUuid::fromString('a136c6fe-8f6e-45ed-91bc-436c649da004'),
-            'Ma carte',
+            LabelEntity::fromString('Ma carte'),
             [$product],
             new \DateTimeImmutable('2020-10-25 15:00:00'),
             [],

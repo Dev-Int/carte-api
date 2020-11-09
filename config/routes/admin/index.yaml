@@ -1,0 +1,9 @@
+admin_api_products:
+  resource: products.yaml
+#  type: rest
+
+admin_api_menus:
+  resource: menus.yaml
+
+admin_api_cartes:
+  resource: cartes.yaml

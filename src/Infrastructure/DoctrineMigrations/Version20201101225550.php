@@ -35,39 +35,39 @@ final class Version20201101225550 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql(
-            'CREATE TABLE carte ('.
-            'uuid CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', '.
-            'products_id CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', '.
-            'menus_id CHAR(36) DEFAULT NULL COMMENT \'(DC2Type:guid)\', '.
-            'label VARCHAR(50) NOT NULL, '.
-            'created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'updated_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'deleted_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'INDEX IDX_BAD4FFFD6C8A81A9 (products_id), '.
-            'INDEX IDX_BAD4FFFD14041B84 (menus_id), '.
-            'PRIMARY KEY(uuid)'.
+            'CREATE TABLE carte (' .
+            'uuid CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', ' .
+            'products_id CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', ' .
+            'menus_id CHAR(36) DEFAULT NULL COMMENT \'(DC2Type:guid)\', ' .
+            'label VARCHAR(50) NOT NULL, ' .
+            'created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'updated_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'deleted_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'INDEX IDX_BAD4FFFD6C8A81A9 (products_id), ' .
+            'INDEX IDX_BAD4FFFD14041B84 (menus_id), ' .
+            'PRIMARY KEY(uuid)' .
             ') DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB'
         );
         $this->addSql(
-            'CREATE TABLE menu ('.
-            'uuid CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', '.
-            'products_id CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', '.
-            'label VARCHAR(50) NOT NULL, '.
-            'created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'updated_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'deleted_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'INDEX IDX_7D053A936C8A81A9 (products_id), '.
-            'PRIMARY KEY(uuid)'.
+            'CREATE TABLE menu (' .
+            'uuid CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', ' .
+            'products_id CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', ' .
+            'label VARCHAR(50) NOT NULL, ' .
+            'created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'updated_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'deleted_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'INDEX IDX_7D053A936C8A81A9 (products_id), ' .
+            'PRIMARY KEY(uuid)' .
             ') DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB'
         );
         $this->addSql(
-            'CREATE TABLE product ('.
-            'uuid CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', '.
-            'label VARCHAR(50) NOT NULL, '.
-            'created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'updated_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'deleted_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', '.
-            'PRIMARY KEY(uuid)'.
+            'CREATE TABLE product (' .
+            'uuid CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', ' .
+            'label VARCHAR(50) NOT NULL, ' .
+            'created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'updated_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'deleted_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', ' .
+            'PRIMARY KEY(uuid)' .
             ') DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB'
         );
         $this->addSql(

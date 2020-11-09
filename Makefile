@@ -98,7 +98,7 @@ db-migrate:
 
 ## Tests
 .PHONY: tests
-tests: unit #behat
+tests: unit behat
 
 ## Unit tests
 .PHONY: unit

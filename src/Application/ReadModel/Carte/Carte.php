@@ -11,56 +11,64 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Domain\Entity;
+namespace Application\ReadModel\Carte;
 
 use Domain\Entity\Common\VO\LabelEntity;
 use Domain\Entity\Protocols\UuidProtocol;
-use Domain\Entity\Traits\SoftDeletableEntity;
-use Domain\Entity\Traits\TimestampableEntity;
 
-class Carte
+final class Carte
 {
-    use SoftDeletableEntity;
-    use TimestampableEntity;
-
     /**
      * @var string
      */
-    private $uuid;
+    public $uuid;
     /**
      * @var string
      */
-    private $label;
+    public $label;
     /**
      * @var array
      */
-    private $products;
+    public $products;
     /**
-     * @var array|null
+     * @var array
      */
-    private $menus;
+    public $menus;
+    /**
+     * @var \DateTimeImmutable
+     */
+    public $createdAt;
+    /**
+     * @var \DateTimeImmutable|null
+     */
+    public $updatedAt;
+    /**
+     * @var \DateTimeImmutable|null
+     */
+    public $deletedAt;
     /**
      * @var string
      */
-    private $slug;
+    public $slug;
 
     public function __construct(
-        UuidProtocol $uuid,
-        LabelEntity $label,
+        string $uuid,
+        string $label,
         array $products,
         \DateTimeImmutable $createdAt,
+        string $slug,
         array $menus = [],
         ?\DateTimeImmutable $updatedAt = null,
         ?\DateTimeImmutable $deletedAt = null
     ) {
-        $this->uuid = $uuid->toString();
-        $this->label = $label->getValue();
+        $this->uuid = $uuid;
+        $this->label = $label;
         $this->products = $products;
         $this->menus = $menus;
+        $this->slug = $slug;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
         $this->deletedAt = $deletedAt;
-        $this->slug = $label->slugify();
     }
 
     public static function create(
@@ -73,32 +81,54 @@ class Carte
         ?\DateTimeImmutable $deletedAt = null
     ): self {
         return new self(
-            $uuid,
-            $label,
+            $uuid->toString(),
+            $label->getValue(),
             $products,
             $createdAt,
+            $label->slugify(),
             $menus,
             $updatedAt,
             $deletedAt
         );
     }
 
-    public function changeLabel(LabelEntity $label, \DateTimeImmutable $updatedAt): void
+    public function getUuid(): string
     {
-        $this->label = $label->getValue();
-        $this->slug = $label->slugify();
-        $this->updatedAt = $updatedAt;
+        return $this->uuid;
     }
 
-    public function updateProducts(array $products, \DateTimeImmutable $updatedAt): void
+    public function getLabel(): string
     {
-        $this->products = $products;
-        $this->updatedAt = $updatedAt;
+        return $this->label;
     }
 
-    public function updateMenus(array $menus, \DateTimeImmutable $updatedAt): void
+    public function getProducts(): array
     {
-        $this->menus = $menus;
-        $this->updatedAt = $updatedAt;
+        return $this->products;
+    }
+
+    public function getMenus(): array
+    {
+        return $this->menus;
+    }
+
+    public function getCreatedAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function getDeletedAt(): ?\DateTimeImmutable
+    {
+        return $this->deletedAt;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
     }
 }

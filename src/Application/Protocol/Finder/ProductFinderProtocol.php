@@ -11,19 +11,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Domain\Protocol\Repository;
+namespace Application\Protocol\Finder;
 
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 use Domain\Entity\Product;
 
-interface ProductRepositoryProtocol
+interface ProductFinderProtocol extends ServiceEntityRepositoryInterface
 {
     /**
-     * Save the Product object in database.
+     * Find one Product by his slug.
      */
-    public function save(Product $product): void;
-
-    /**
-     * Delete the Product object in database.
-     */
-    public function remove(Product $product): void;
+    public function findOne(string $slug): Product;
 }
